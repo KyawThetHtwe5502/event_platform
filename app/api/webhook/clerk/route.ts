@@ -2,7 +2,8 @@ import { headers } from "next/headers";
 import { Webhook } from "svix";
 import { NextRequest, NextResponse } from "next/server";
 import { createUser } from "@/lib/actions/user.action";
-import clerkClient from "@clerk/clerk-sdk-node";  // ✅ correct import
+import clerkClient from "@clerk/clerk-sdk-node";
+
 
 export async function POST(req: NextRequest) {
   const secret = process.env.CLERK_WEBHOOK_SECRET;
@@ -48,7 +49,7 @@ export async function POST(req: NextRequest) {
     };
 
     const newUser = await createUser(user);
-
+    
     if (newUser) {
       await clerkClient.users.updateUserMetadata(id, {
         publicMetadata: {
