@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { Webhook } from "svix";
 import { NextRequest, NextResponse } from "next/server";
 import { createUser } from "@/lib/actions/user.action";
-import clerkClient from "@clerk/clerk-sdk-node";
+import { clerkClient } from "@clerk/nextjs/server";
 
 
 export async function POST(req: NextRequest) {
@@ -51,7 +51,9 @@ export async function POST(req: NextRequest) {
     const newUser = await createUser(user);
     
     if (newUser) {
-      await clerkClient.users.updateUserMetadata(id, {
+          const client = await clerkClient()
+
+      await client.users.updateUserMetadata(id, {
         publicMetadata: {
           userId: newUser._id,
         },
