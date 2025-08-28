@@ -63,8 +63,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Ok", user: newUser });
   }
 
-  console.log(`✅ Received webhook with ID ${id} and event type ${eventType}`);
-  console.log("Webhook payload:", evt.data);
 
   return new Response("Webhook received", { status: 200 });
 }
