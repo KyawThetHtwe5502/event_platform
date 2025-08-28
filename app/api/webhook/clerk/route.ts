@@ -13,12 +13,16 @@ export async function POST(req: NextRequest) {
     return new Response("Missing Clerk webhook secret", { status: 500 });
   }
 
+  
+    const headersList = await headers(); // 👈 await it
+
+
+  const svix_id = headersList.get("svix-id") ?? "";
+  const svix_timestamp = headersList.get("svix-timestamp") ?? "";
+  const svix_signature = headersList.get("svix-signature") ?? "";
+
   const payload = await req.json();
   const body = JSON.stringify(payload);
-
-  const svix_id = headers().get("svix-id") ?? "";
-  const svix_timestamp = headers().get("svix-timestamp") ?? "";
-  const svix_signature = headers().get("svix-signature") ?? "";
 
   const wh = new Webhook(secret);
 
