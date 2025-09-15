@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 const NavItems = () => {
     const pathname = usePathname();
   return (
-    <ul className="flex md:flex-row justify-between   w-full flex-col items-start gap-5 ">
+    <ul className="flex md:flex-row  justify-between   w-full flex-col items-start gap-5 ">
         
 {
     headerLinks.map((link) => { 

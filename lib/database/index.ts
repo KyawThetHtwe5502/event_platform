@@ -1,4 +1,3 @@
-import { promise } from './../../node_modules/effect/src/internal/core-effect';
 import mongoose from "mongoose";
 
 

@@ -1,10 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "qoc91ovld8.ufs.sh",
+      },
+    ],
+  },
+
+  // Development only (avoid in prod)
   typescript: {
-    // ❌ build ကို error နဲ့ fail မဖြစ်စေချင်ရင်
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: process.env.NODE_ENV === "development",
   },
 };
 

@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
+      <body suppressHydrationWarning
         className={`${poppins.variable} flex flex-col min-h-screen`}
       >
             <ClerkProvider>
