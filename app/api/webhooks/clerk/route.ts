@@ -85,13 +85,11 @@ import { headers } from "next/headers";
 import { Webhook } from "svix";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/lib/database/models/user.model";
-// import { connectDB } from "@/lib/mongodb";
-// import User from "@/models/User";
 
 export async function POST(req: NextRequest) {
   // Verify Clerk Webhook
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET!;
-  const headerPayload = headers();
+  const headerPayload = await headers();
   const svix_id = headerPayload.get("svix-id");
   const svix_timestamp = headerPayload.get("svix-timestamp");
   const svix_signature = headerPayload.get("svix-signature");

@@ -1,11 +1,11 @@
 import EventForm from '@/components/shared/EventForm'
+import { useUser } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server'
 import React from 'react'
 
 const UpdateEvent = () => {
-    const { sessionClaims } = auth();
-
-    const userId = sessionClaims?.userId as string
+    const {user} = useUser();
+    const userId = user?.id as string;
   return (
     <>
     <section className='bg-gray-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10'>

@@ -4,7 +4,7 @@ import Event from "../database/models/event.model";
 import User from "../database/models/user.model";
 import mongoose from "mongoose";
 
-export const createEvent = async ({event, userId}:CreateEventParams) => {
+export const createEvent = async ({event, userId,path}:CreateEventParams) => {
     try{
         await connectToDatabase();
         const organizer  = await User.findById(userId);
@@ -17,8 +17,9 @@ export const createEvent = async ({event, userId}:CreateEventParams) => {
             category: new mongoose.Types.ObjectId(event.categoryId),
             organizer: new mongoose.Types.ObjectId(userId)
         });
-
-        return JSON.parse(JSON.stringify(newEvent));
+        if(newEvent){
+        console.log(path,'Path')
+                }        return JSON.parse(JSON.stringify(newEvent));
 
     } catch(error){
         console.log(error)

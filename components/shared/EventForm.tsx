@@ -53,7 +53,8 @@ const EventForm = ({userId,type}: EventFormProps) => {
         try {
           const newEvent = await createEvent({
             event: {...values,imageUrl: uploadedImageUrl},
-            userId          });
+            userId,
+          path: '/event'          });
           console.log(newEvent,'New Event')
           if(newEvent){
             form.reset();
@@ -146,7 +147,7 @@ const EventForm = ({userId,type}: EventFormProps) => {
                 <div className="flex items-center h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
                   <FaCalendarAlt className="text-gray-500 size-6" />
                   <p className="mx-3 whitespace-nowrap text-gray-600">Start Date:</p>
-   <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)} showTimeSelect timeInputLabel="Time:" dateFormat={"MM/dd/yyyy h:mm aa"} wrapperClassName="datePicker" />
+   <DatePicker selected={field.value} onChange={(date: Date | null) => field.onChange(date)} showTimeSelect timeInputLabel="Time:" dateFormat={"MM/dd/yyyy h:mm aa"} wrapperClassName="datePicker" />
                 </div>
               </FormControl>
               <FormMessage />
@@ -162,7 +163,7 @@ const EventForm = ({userId,type}: EventFormProps) => {
                 <div className=" flex items-center h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
                   <FaCalendarAlt className="text-gray-500 size-6" />
                   <p className="mx-3 whitespace-nowrap text-gray-600">End Date:</p>
-   <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)} showTimeSelect timeInputLabel="Time:" dateFormat={"MM/dd/yyyy h:mm aa"} wrapperClassName="datePicker" />
+   <DatePicker selected={field.value} onChange={(date: Date | null) => field.onChange(date)} showTimeSelect timeInputLabel="Time:" dateFormat={"MM/dd/yyyy h:mm aa"} wrapperClassName="datePicker" />
                 </div>
               </FormControl>
               <FormMessage />

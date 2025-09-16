@@ -30,7 +30,7 @@ export default function RootLayout({
       <body suppressHydrationWarning
         className={`${poppins.variable} flex flex-col min-h-screen`}
       >
-            <ClerkProvider>
+            <ClerkProvider  publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}>
 
               <Header/>
               <main className="">

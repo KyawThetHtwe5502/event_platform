@@ -19,8 +19,8 @@ export default function FileUploader({onFileChange, imageUrl,setFiles}:FileUploa
           // Do something with the response
           console.log("Files: ", res);
           const url = res[0].ufsUrl;
-          res && setFiles(url as unknown as File[]);
-          onFileChange(url as unknown as File[]);
+          res && setFiles?.(url as unknown as File[]);
+          onFileChange?.(url as unknown as File[]);
           alert("Upload Completed");
         }}
         onUploadError={(error: Error) => {
